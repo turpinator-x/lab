@@ -1,0 +1,4 @@
+#!/bin/bash
+file="my important file.txt"
+rm "$file"
+
