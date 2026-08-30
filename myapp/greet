@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Hello from my container!"
+curl https://example.com
