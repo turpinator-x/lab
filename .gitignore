@@ -1,6 +1,6 @@
-__pycache__/
 *.pyc
+__pycache__/
 .venv/
 node_modules/
-*.tfstate*
-.terraform/
+*.swp
+*.swo
