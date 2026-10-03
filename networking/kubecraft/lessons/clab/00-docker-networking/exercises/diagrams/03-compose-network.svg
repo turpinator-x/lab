@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <rect width="1200" height="900" fill="#ffffff"/>
+
+  <text x="600" y="34" text-anchor="middle" font-size="22" font-weight="bold" fill="#111827">Lesson 00 bonus: Docker Compose network (exercises_default)</text>
+
+  <!-- Host -->
+  <rect x="30" y="56" width="1140" height="680" rx="14" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="50" y="84" font-size="16" font-weight="bold" fill="#334155">Host: Stealth-17Studio-A13VG (root network namespace)</text>
+
+  <!-- web -->
+  <rect x="110" y="104" width="380" height="170" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="130" y="132" font-size="16" font-weight="bold" fill="#1d4ed8">exercises-web-1 (nginx:1.27-alpine)</text>
+  <rect x="200" y="148" width="200" height="56" rx="6" fill="#ffffff" stroke="#2563eb"/>
+  <text x="300" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">eth0  ·  DNS name "web"</text>
+  <text x="300" y="192" text-anchor="middle" font-size="13" fill="#111827">172.18.0.2/16</text>
+  <text x="130" y="228" font-size="12" fill="#374151">MAC ea:2e:48:68:ca:96</text>
+  <text x="130" y="248" font-size="12" fill="#374151">default via 172.18.0.1</text>
+
+  <!-- client -->
+  <rect x="710" y="104" width="380" height="170" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="730" y="132" font-size="16" font-weight="bold" fill="#1d4ed8">exercises-client-1 (alpine:3.20)</text>
+  <rect x="800" y="148" width="200" height="56" rx="6" fill="#ffffff" stroke="#2563eb"/>
+  <text x="900" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">eth0  ·  DNS name "client"</text>
+  <text x="900" y="192" text-anchor="middle" font-size="13" fill="#111827">172.18.0.3/16</text>
+  <text x="730" y="228" font-size="12" fill="#374151">MAC 96:f2:58:61:f4:cb</text>
+  <text x="730" y="248" font-size="12" fill="#374151">default via 172.18.0.1</text>
+
+  <!-- DNS call-out between containers -->
+  <rect x="505" y="150" width="190" height="96" rx="8" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="600" y="172" text-anchor="middle" font-size="12" font-weight="bold" fill="#854d0e">Docker embedded DNS</text>
+  <text x="600" y="192" text-anchor="middle" font-size="12" fill="#111827">127.0.0.11 in each container</text>
+  <text x="600" y="212" text-anchor="middle" font-size="12" fill="#111827">"ping web" → 172.18.0.2</text>
+  <text x="600" y="232" text-anchor="middle" font-size="11" fill="#6b7280">(not on default bridge)</text>
+
+  <!-- veth pairs -->
+  <line x1="300" y1="204" x2="300" y2="318" stroke="#7c3aed" stroke-width="4" stroke-dasharray="10 5"/>
+  <line x1="900" y1="204" x2="900" y2="318" stroke="#7c3aed" stroke-width="4" stroke-dasharray="10 5"/>
+  <text x="312" y="300" font-size="12" fill="#6d28d9">veth pair</text>
+  <text x="912" y="300" font-size="12" fill="#6d28d9">veth pair</text>
+
+  <rect x="200" y="318" width="200" height="48" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="300" y="340" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">vethd7dadcf@if2</text>
+  <text x="300" y="358" text-anchor="middle" font-size="12" fill="#374151">host #20 · netnsid 0</text>
+
+  <rect x="800" y="318" width="200" height="48" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="900" y="340" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">vethe05c8e2@if2</text>
+  <text x="900" y="358" text-anchor="middle" font-size="12" fill="#374151">host #21 · netnsid 1</text>
+  <text x="600" y="346" text-anchor="middle" font-size="11" fill="#6b7280">(which veth belongs to which</text>
+  <text x="600" y="360" text-anchor="middle" font-size="11" fill="#6b7280">container was not captured)</text>
+
+  <line x1="300" y1="366" x2="300" y2="400" stroke="#7c3aed" stroke-width="3"/>
+  <line x1="900" y1="366" x2="900" y2="400" stroke="#7c3aed" stroke-width="3"/>
+
+  <!-- compose bridge -->
+  <rect x="110" y="400" width="980" height="74" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="2.5"/>
+  <text x="600" y="430" text-anchor="middle" font-size="17" font-weight="bold" fill="#065f46">br-e854efa87b13  (Linux bridge #19 = Docker network "exercises_default")</text>
+  <text x="600" y="456" text-anchor="middle" font-size="13" fill="#065f46">172.18.0.1/16 (gateway) · MAC ba:34:9b:06:29:07 · bridge name = "br-" + network ID</text>
+
+  <!-- other bridges -->
+  <rect x="50" y="500" width="300" height="70" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-dasharray="6 4"/>
+  <text x="200" y="526" text-anchor="middle" font-size="13" font-weight="bold" fill="#4b5563">docker0 (#9) · 172.17.0.0/16</text>
+  <text x="200" y="548" text-anchor="middle" font-size="12" fill="#4b5563">still exists, DOWN (no containers)</text>
+
+  <rect x="850" y="500" width="300" height="70" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-dasharray="6 4"/>
+  <text x="1000" y="526" text-anchor="middle" font-size="13" font-weight="bold" fill="#4b5563">virbr0 (#4) · libvirt</text>
+  <text x="1000" y="548" text-anchor="middle" font-size="12" fill="#4b5563">win11 VM's bridge (unrelated)</text>
+
+  <!-- NAT -->
+  <line x1="600" y1="474" x2="600" y2="520" stroke="#334155" stroke-width="3"/>
+  <rect x="380" y="520" width="440" height="84" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+  <text x="600" y="546" text-anchor="middle" font-size="15" font-weight="bold" fill="#9a3412">Kernel routing + NAT (Docker-managed)</text>
+  <text x="600" y="568" text-anchor="middle" font-size="13" fill="#111827">net.ipv4.ip_forward = 1</text>
+  <text x="600" y="590" text-anchor="middle" font-size="13" fill="#111827">Docker adds MASQUERADE for 172.18.0.0/16</text>
+
+  <line x1="600" y1="604" x2="600" y2="650" stroke="#334155" stroke-width="3"/>
+  <rect x="460" y="650" width="280" height="56" rx="6" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="600" y="672" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">enp45s0 (host uplink)</text>
+  <text x="600" y="694" text-anchor="middle" font-size="13" fill="#111827">192.168.1.220</text>
+
+  <!-- notes -->
+  <text x="50" y="640" font-size="13" font-weight="bold" fill="#c2410c">What Compose did automatically:</text>
+  <text x="50" y="662" font-size="12" fill="#111827">new bridge + subnet per project,</text>
+  <text x="50" y="682" font-size="12" fill="#111827">veth pair per container, DNS by</text>
+  <text x="50" y="702" font-size="12" fill="#111827">service name, NAT rule</text>
+
+  <text x="780" y="640" font-size="13" font-weight="bold" fill="#065f46">Verified:</text>
+  <text x="780" y="662" font-size="12" fill="#111827">client → "web" ping OK (~0.06 ms)</text>
+  <text x="780" y="682" font-size="12" fill="#111827">compose down removed containers,</text>
+  <text x="780" y="702" font-size="12" fill="#111827">network and bridge</text>
+
+  <!-- outside -->
+  <line x1="600" y1="706" x2="600" y2="780" stroke="#334155" stroke-width="3"/>
+  <rect x="470" y="780" width="260" height="56" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+  <text x="600" y="804" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">Home router</text>
+  <text x="600" y="824" text-anchor="middle" font-size="13" fill="#111827">192.168.1.1</text>
+  <line x1="730" y1="808" x2="870" y2="808" stroke="#334155" stroke-width="3"/>
+  <rect x="870" y="780" width="240" height="56" rx="28" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+  <text x="990" y="812" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">Internet</text>
+
+  <text x="1160" y="886" text-anchor="end" font-size="11" fill="#6b7280">KubeCraft clab lesson 00 · captured 2026-10-03 · diagram drawn with Claude (AI-assisted)</text>
+</svg>
