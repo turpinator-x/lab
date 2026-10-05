@@ -1,0 +1,46 @@
+{
+  "three-routers": [
+    {
+      "lab_name": "three-routers",
+      "labPath": "exercises/three-node.clab.yml",
+      "absLabPath": "/home/jarrodt/lab/networking/kubecraft/lessons/clab/01-containerlab-primer/exercises/three-node.clab.yml",
+      "name": "clab-three-routers-srl1",
+      "container_id": "92c62c2e37b7",
+      "image": "ghcr.io/nokia/srlinux:24.10.1",
+      "kind": "srl",
+      "state": "running",
+      "status": "Up 6 minutes",
+      "ipv4_address": "172.20.20.4/24",
+      "ipv6_address": "3fff:172:20:20::4/64",
+      "owner": "jarrodt"
+    },
+    {
+      "lab_name": "three-routers",
+      "labPath": "exercises/three-node.clab.yml",
+      "absLabPath": "/home/jarrodt/lab/networking/kubecraft/lessons/clab/01-containerlab-primer/exercises/three-node.clab.yml",
+      "name": "clab-three-routers-srl2",
+      "container_id": "319fc54f6949",
+      "image": "ghcr.io/nokia/srlinux:24.10.1",
+      "kind": "srl",
+      "state": "running",
+      "status": "Up 6 minutes",
+      "ipv4_address": "172.20.20.3/24",
+      "ipv6_address": "3fff:172:20:20::3/64",
+      "owner": "jarrodt"
+    },
+    {
+      "lab_name": "three-routers",
+      "labPath": "exercises/three-node.clab.yml",
+      "absLabPath": "/home/jarrodt/lab/networking/kubecraft/lessons/clab/01-containerlab-primer/exercises/three-node.clab.yml",
+      "name": "clab-three-routers-srl3",
+      "container_id": "8391f19a989c",
+      "image": "ghcr.io/nokia/srlinux:24.10.1",
+      "kind": "srl",
+      "state": "running",
+      "status": "Up 6 minutes",
+      "ipv4_address": "172.20.20.2/24",
+      "ipv6_address": "3fff:172:20:20::2/64",
+      "owner": "jarrodt"
+    }
+  ]
+}

@@ -1,3 +1,6 @@
 .venv/
 __pycache__/
 *.pyc
+
+# containerlab runtime lab directories (created next to each topology file; contain TLS keys, root-owned)
+clab-*/
