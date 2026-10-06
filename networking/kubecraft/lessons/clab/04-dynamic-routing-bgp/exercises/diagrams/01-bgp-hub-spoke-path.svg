@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/></marker>
+  </defs>
+  <rect width="1200" height="860" fill="#ffffff"/>
+  <text x="600" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#111827">Lesson 04: eBGP hub-and-spoke, path host2 → host3</text>
+  <text x="600" y="62" text-anchor="middle" font-size="14" fill="#4b5563">Each router is its own AS. Routes are learned over eBGP sessions (no static routes).</text>
+
+  <!-- highlighted path (behind everything) -->
+  <polyline points="300,720 300,490 600,210 900,490 900,720" fill="none" stroke="#fdba74" stroke-width="18" stroke-linejoin="round" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- links -->
+  <line x1="270" y1="210" x2="480" y2="210" stroke="#334155" stroke-width="3"/>
+  <line x1="545" y1="265" x2="330" y2="435" stroke="#334155" stroke-width="3"/>
+  <line x1="655" y1="265" x2="870" y2="435" stroke="#334155" stroke-width="3"/>
+  <line x1="300" y1="545" x2="300" y2="680" stroke="#334155" stroke-width="3"/>
+  <line x1="900" y1="545" x2="900" y2="680" stroke="#334155" stroke-width="3"/>
+  <line x1="420" y1="490" x2="780" y2="490" stroke="#9ca3af" stroke-width="3" stroke-dasharray="10 7"/>
+
+  <!-- link labels -->
+  <text x="375" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">10.1.1.0/24</text>
+  <text x="282" y="232" font-size="12" fill="#6b7280">.2</text>
+  <text x="430" y="232" font-size="12" fill="#6b7280">e1-1 .1</text>
+
+  <text x="395" y="330" text-anchor="end" font-size="13" font-weight="bold" fill="#334155">10.1.2.0/24</text>
+  <text x="395" y="348" text-anchor="end" font-size="12" fill="#047857">eBGP: Established</text>
+  <text x="500" y="300" text-anchor="end" font-size="12" fill="#6b7280">e1-2 .1</text>
+  <text x="340" y="425" text-anchor="end" font-size="12" fill="#6b7280">e1-1 .2</text>
+
+  <text x="805" y="330" font-size="13" font-weight="bold" fill="#334155">10.1.3.0/24</text>
+  <text x="805" y="348" font-size="12" fill="#047857">eBGP: Established</text>
+  <text x="700" y="300" font-size="12" fill="#6b7280">e1-3 .1</text>
+  <text x="860" y="425" font-size="12" fill="#6b7280">e1-1 .2</text>
+
+  <text x="315" y="618" font-size="13" font-weight="bold" fill="#334155">10.1.4.0/24</text>
+  <text x="315" y="560" font-size="12" fill="#6b7280">e1-2 .1</text>
+  <text x="315" y="672" font-size="12" fill="#6b7280">.2</text>
+
+  <text x="885" y="618" text-anchor="end" font-size="13" font-weight="bold" fill="#334155">10.1.5.0/24</text>
+  <text x="885" y="560" text-anchor="end" font-size="12" fill="#6b7280">e1-2 .1</text>
+  <text x="885" y="672" text-anchor="end" font-size="12" fill="#6b7280">.2</text>
+
+  <text x="600" y="478" text-anchor="middle" font-size="12" fill="#6b7280">e1-3 ↔ e1-3: pre-wired, not configured yet</text>
+  <text x="600" y="512" text-anchor="middle" font-size="12" fill="#6b7280">(becomes 10.1.6.0/24 in Exercise 2)</text>
+
+  <!-- routers -->
+  <rect x="480" y="155" width="240" height="110" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2.5"/>
+  <text x="600" y="185" text-anchor="middle" font-size="17" font-weight="bold" fill="#065f46">srl1 (hub)</text>
+  <text x="600" y="208" text-anchor="middle" font-size="13" fill="#111827">AS 65001</text>
+  <text x="600" y="228" text-anchor="middle" font-size="13" fill="#111827">router-id 10.0.0.1</text>
+  <text x="600" y="248" text-anchor="middle" font-size="11" fill="#4b5563">peers: 10.1.2.2 (65002), 10.1.3.2 (65003)</text>
+
+  <rect x="180" y="435" width="240" height="110" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="300" y="465" text-anchor="middle" font-size="17" font-weight="bold" fill="#1d4ed8">srl2 (spoke)</text>
+  <text x="300" y="488" text-anchor="middle" font-size="13" fill="#111827">AS 65002</text>
+  <text x="300" y="508" text-anchor="middle" font-size="13" fill="#111827">router-id 10.0.0.2</text>
+  <text x="300" y="528" text-anchor="middle" font-size="11" fill="#4b5563">peer: 10.1.2.1 (65001)</text>
+
+  <rect x="780" y="435" width="240" height="110" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="900" y="465" text-anchor="middle" font-size="17" font-weight="bold" fill="#1d4ed8">srl3 (spoke)</text>
+  <text x="900" y="488" text-anchor="middle" font-size="13" fill="#111827">AS 65003</text>
+  <text x="900" y="508" text-anchor="middle" font-size="13" fill="#111827">router-id 10.0.0.3</text>
+  <text x="900" y="528" text-anchor="middle" font-size="11" fill="#4b5563">peer: 10.1.3.1 (65001)</text>
+
+  <!-- hosts -->
+  <rect x="70" y="170" width="200" height="80" rx="8" fill="#f9fafb" stroke="#6b7280" stroke-width="2"/>
+  <text x="170" y="203" text-anchor="middle" font-size="15" font-weight="bold" fill="#111827">host1</text>
+  <text x="170" y="225" text-anchor="middle" font-size="13" fill="#111827">10.1.1.2 · gw .1</text>
+
+  <rect x="200" y="680" width="200" height="80" rx="8" fill="#f9fafb" stroke="#6b7280" stroke-width="2"/>
+  <text x="300" y="713" text-anchor="middle" font-size="15" font-weight="bold" fill="#111827">host2</text>
+  <text x="300" y="735" text-anchor="middle" font-size="13" fill="#111827">10.1.4.2 · gw .1</text>
+
+  <rect x="800" y="680" width="200" height="80" rx="8" fill="#f9fafb" stroke="#6b7280" stroke-width="2"/>
+  <text x="900" y="713" text-anchor="middle" font-size="15" font-weight="bold" fill="#111827">host3</text>
+  <text x="900" y="735" text-anchor="middle" font-size="13" fill="#111827">10.1.5.2 · gw .1</text>
+
+  <!-- hop badges from traceroute -->
+  <g font-size="13" font-weight="bold" fill="#ffffff">
+    <circle cx="160" cy="490" r="15" fill="#c2410c"/><text x="160" y="495" text-anchor="middle">1</text>
+    <circle cx="460" cy="155" r="15" fill="#c2410c"/><text x="460" y="160" text-anchor="middle">2</text>
+    <circle cx="1040" cy="490" r="15" fill="#c2410c"/><text x="1040" y="495" text-anchor="middle">3</text>
+    <circle cx="1020" cy="720" r="15" fill="#c2410c"/><text x="1020" y="725" text-anchor="middle">4</text>
+  </g>
+
+  <!-- legend / traceroute -->
+  <rect x="40" y="782" width="1120" height="62" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="1.5"/>
+  <text x="60" y="806" font-size="13" font-weight="bold" fill="#9a3412">traceroute host2 → 10.1.5.2:</text>
+  <text x="290" y="806" font-size="13" fill="#111827">1 10.1.4.1 (srl2)  →  2 10.1.2.1 (srl1)  →  3 10.1.3.2 (srl3)  →  4 10.1.5.2 (host3)</text>
+  <text x="60" y="830" font-size="12" fill="#374151">srl2 learned 10.1.5.0/24 from srl1 via eBGP with AS path [65001, 65003], so the only path goes through the hub. Orange = path taken.</text>
+
+  <text x="1160" y="110" text-anchor="end" font-size="11" fill="#6b7280">KubeCraft clab lesson 04 · 2026-10-06 · drawn with Claude (AI-assisted)</text>
+</svg>
