@@ -4,3 +4,6 @@ __pycache__/
 node_modules/
 *.swp
 *.swo
+
+# Python, Docker & AI course: its own private repo (turpinator-x/python-docker-ai), paid course material
+python-docker-ai/

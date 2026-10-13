@@ -57,3 +57,7 @@ Manifests from the Kubernetes Fundamentals course, run on a local Rancher Deskto
 ## Dev containers
 
 `devpod-test/` is a DevPod workspace from the Dev Containers course: a `devcontainer.json` with the Azure CLI, GitHub CLI, and 1Password CLI features, plus a dotfiles `setup` script.
+
+## Python, Docker & AI
+
+The Python, Docker & AI course (a local LLM, embeddings and a vector database, and a PDF question-answering service, all in Docker Compose) is checked out at `python-docker-ai/` but lives in its own private repo, because it builds on the course's paid starter code. Write-ups of my own work will go here.
