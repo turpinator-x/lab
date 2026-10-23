@@ -54,6 +54,19 @@ Manifests from the Kubernetes Fundamentals course, run on a local Rancher Deskto
 | 04 | dynamic routing with eBGP: export policies, path selection, failover |
 | 05 | spine-leaf BGP fabric: ECMP, spine failure, route leaks |
 
+## Cilium sandbox
+
+`cilium-sandbox/` is a throwaway kind cluster (one control plane, two workers) for trying Cilium from the Homelab Advanced course before it goes anywhere near the real homelab. kind's default CNI and kube-proxy are turned off so Cilium replaces both.
+
+| File | What it covers |
+|---|---|
+| `kind-config.yaml` | three-node kind cluster with no default CNI and no kube-proxy |
+| `cilium-values.yaml` | Cilium with kube-proxy replacement, L2 announcements, and Hubble (relay + UI) |
+| `lb-pool.yaml` | LoadBalancer IPAM pool plus an L2 announcement policy on the worker nodes, so a Service gets an IP that fails over between workers |
+| `web.yaml` | nginx Deployment behind a LoadBalancer Service that draws from the pool |
+| `netpol.yaml` | NetworkPolicy that only lets pods labelled `access=true` reach the web pods |
+| `mise.toml` | pinned `cilium-cli` and `kind` versions |
+
 ## Dev containers
 
 `devpod-test/` is a DevPod workspace from the Dev Containers course: a `devcontainer.json` with the Azure CLI, GitHub CLI, and 1Password CLI features, plus a dotfiles `setup` script.
