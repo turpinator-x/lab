@@ -1,0 +1,27 @@
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: sandbox-pool
+spec:
+  blocks:
+    - start: "172.18.255.200"
+      stop: "172.18.255.210"
+  serviceSelector:
+    matchLabels:
+      lb-pool: sandbox
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: sandbox-l2
+spec:
+  serviceSelector:
+    matchLabels:
+      lb-pool: sandbox
+  nodeSelector:
+    matchExpressions:
+      - key: node-role.kubernetes.io/control-plane
+        operator: DoesNotExist
+  interfaces:
+    - ^eth[0-9]+
+  loadBalancerIPs: true
