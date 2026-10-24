@@ -7,3 +7,5 @@ node_modules/
 
 # Python, Docker & AI course: its own private repo (turpinator-x/python-docker-ai), paid course material
 python-docker-ai/
+# Kubernetes in the Cloud course repo (DevOps OS Part 2): own repo, paid course material
+mercury-workflows/
