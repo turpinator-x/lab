@@ -9,3 +9,5 @@ node_modules/
 python-docker-ai/
 # Kubernetes in the Cloud course repo (DevOps OS Part 2): own repo, paid course material
 mercury-workflows/
+# DevOps Masterclass course repo (DevOps OS Part 2): paid course material, reference only
+devops-study-app/
