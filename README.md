@@ -1,8 +1,10 @@
 # lab
 
-Hands-on coursework from the KubeCraft Career Accelerator (KCCA): Bash scripting, Docker, Kubernetes, and container networking. Started August 2026. Each folder is the work from one lesson or exercise set.
+[![secret-scan](https://github.com/turpinator-x/lab/actions/workflows/secret-scan.yaml/badge.svg)](https://github.com/turpinator-x/lab/actions/workflows/secret-scan.yaml)
 
-My homelab build log, which ties this work together, is in [turpinator-x/homelab](https://github.com/turpinator-x/homelab).
+Hands-on work from the KubeCraft Career Accelerator (KCCA): Bash scripting, Docker, Kubernetes, container networking and Cilium. Each folder is the work from one lesson or exercise set.
+
+The platform this work feeds into is in [turpinator-x/homelab](https://github.com/turpinator-x/homelab).
 
 ## Bash scripting
 
@@ -73,4 +75,12 @@ Manifests from the Kubernetes Fundamentals course, run on a local Rancher Deskto
 
 ## Python, Docker & AI
 
-The Python, Docker & AI course (a local LLM, embeddings and a vector database, and a PDF question-answering service, all in Docker Compose) is checked out at `python-docker-ai/` but lives in its own private repo, because it builds on the course's paid starter code. Write-ups of my own work will go here.
+The Python, Docker & AI course (a local LLM, embeddings and a vector database, and a PDF question-answering service, all in Docker Compose) is checked out at `python-docker-ai/` but lives in its own private repo, because it builds on the course's paid starter code.
+
+## DevOps Masterclass
+
+The DevOps Masterclass (dev containers, mise, Python packaging with uv, containers, CI/CD and Kubernetes) is checked out at `devops-study-app/` and also lives in its own private repo, because it uses paid course material.
+
+## Repo standards
+
+Commits follow Conventional Commits, enforced by Commitizen. Hooks block leaked credentials and unencrypted Kubernetes Secrets and run `shellcheck`; `.pre-commit-config.yaml` and `.githooks/` hold the setup. GitHub Actions scans the full history with gitleaks, and Renovate keeps dependencies current.
