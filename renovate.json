@@ -1,10 +1,29 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "ignorePaths": [".github/workflows/secret-scan.yaml"],
+  "extends": [
+    "config:recommended"
+  ],
+  "ignorePaths": [
+    ".github/workflows/secret-scan.yaml"
+  ],
   "semanticCommits": "enabled",
   "timezone": "America/Los_Angeles",
-  "schedule": ["before 6am on monday"],
+  "schedule": [
+    "before 6am on monday"
+  ],
   "minimumReleaseAge": "7 days",
-  "platformAutomerge": false
+  "platformAutomerge": false,
+  "packageRules": [
+    {
+      "description": "Patch, minor and digest updates merge on their own once the checks pass. Majors wait for the Monday review.",
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "digest",
+        "pin",
+        "pinDigest"
+      ],
+      "automerge": true
+    }
+  ]
 }
