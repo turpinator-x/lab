@@ -12,6 +12,8 @@ on:
 
 jobs:
   claude-review:
+    # Renovate's PRs have no human author to review for, and a failure here blocks automerge.
+    if: github.event.pull_request.user.type != 'Bot'
     # Optional: Filter by PR author
     # if: |
     #   github.event.pull_request.user.login == 'external-contributor' ||
