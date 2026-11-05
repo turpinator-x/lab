@@ -12,3 +12,18 @@ mercury-workflows/
 # DevOps Masterclass (DevOps OS Part 2): course reference copy + my own build repo (turpinator-x/devops-study-app), paid course material
 devops-study-app-reference/
 devops-study-app/
+
+# repo-baseline: secrets, never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.agekey
+*.kubeconfig
+kubeconfig
+*.tfstate
+*.tfstate.*
+dev-keys/
