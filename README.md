@@ -2,7 +2,9 @@
 
 [![secret-scan](https://github.com/turpinator-x/lab/actions/workflows/secret-scan.yaml/badge.svg)](https://github.com/turpinator-x/lab/actions/workflows/secret-scan.yaml)
 
-Hands-on work from the KubeCraft Career Accelerator (KCCA): Bash scripting, Docker, Kubernetes, container networking and Cilium. Each folder is the work from one lesson or exercise set.
+Hands-on work from the KubeCraft Career Accelerator (KCCA): Bash scripting, Docker, Kubernetes, container networking, Cilium and dev containers. Each folder is the work from one lesson or exercise set.
+
+This is my own coursework. The exception is `networking/kubecraft/`, which is the instructor's course repo with my exercise work added (see [Networking](#networking-containerlab)).
 
 The platform this work feeds into is in [turpinator-x/homelab](https://github.com/turpinator-x/homelab).
 
@@ -38,14 +40,16 @@ Manifests from the Kubernetes Fundamentals course, run on a local Rancher Deskto
 
 | Folder | What it covers |
 |---|---|
-| `deployments/` | Pods and Deployments: nginx, rolling vs. recreate updates, a broken deployment to debug |
+| `deployments/` | Pods and Deployments: nginx, multi-container Pods, rolling vs. recreate updates, a broken deployment to debug |
 | `mealie/` | a full app (Mealie recipe manager): Namespace, Deployment, Service, and a PersistentVolumeClaim so data survives the pod |
 | `helm/` | Helm values for installing Homarr |
 | `monitoring/` | kube-prometheus-stack values (Prometheus + Grafana) and a LoadBalancer Service for Grafana |
 
 ## Networking (containerlab)
 
-`networking/kubecraft/` is the course repo for the Networking module, with my exercise work in `lessons/clab/`. Every lesson builds a virtual network of Nokia SR Linux routers in containerlab, then breaks and fixes it. Each lesson's `exercises/PROGRESS.md` lists what I did and links to the write-ups.
+`networking/kubecraft/` is imported from the course repo for the Networking module, [drewelliott/kubecraft](https://github.com/drewelliott/kubecraft). The lessons, topologies, tests and solutions come from the course. My work is the results, write-ups and `PROGRESS.md` files in each lesson's `exercises/` folder under `lessons/clab/`. Where Claude helped with a write-up or diagram, the file says so.
+
+Lesson 00 works with Docker and Linux network tools. Lessons 01 to 05 build virtual networks of Nokia SR Linux routers in containerlab, using Ansible and gNMIc along the way, then break and fix them. Each lesson's `exercises/PROGRESS.md` lists what I did and links to the write-ups.
 
 | Lesson | Topic |
 |---|---|
@@ -77,10 +81,16 @@ Manifests from the Kubernetes Fundamentals course, run on a local Rancher Deskto
 
 The Python, Docker & AI course (a local LLM, embeddings and a vector database, and a PDF question-answering service, all in Docker Compose) is checked out at `python-docker-ai/` but lives in its own private repo, because it builds on the course's paid starter code.
 
+## Kubernetes in the Cloud
+
+The Kubernetes in the Cloud course (Terraform on Azure, AKS, GitOps, databases, hardening and monitoring) uses paid course material, so it isn't here. The course repo is checked out locally at `mercury-workflows/` and git-ignored, and my build is in the private repo `blockone-workflows`.
+
 ## DevOps Masterclass
 
-The DevOps Masterclass (dev containers, mise, Python packaging with uv, containers, CI/CD and Kubernetes) is checked out at `devops-study-app/` and also lives in its own private repo, because it uses paid course material.
+The DevOps Masterclass (dev containers, mise, Python packaging with uv, containers, CI/CD and Kubernetes) is checked out at `devops-study-app/`, with its GitOps repo at `devops-study-app-gitops/`. Both are private repos, because they use paid course material.
 
 ## Repo standards
 
-Commits follow Conventional Commits, enforced by Commitizen. Hooks block leaked credentials and unencrypted Kubernetes Secrets and run `shellcheck`; `.pre-commit-config.yaml` and `.githooks/` hold the setup. GitHub Actions scans the full history with gitleaks, and Renovate keeps dependencies current.
+Commits follow Conventional Commits, enforced by Commitizen. Hooks block leaked credentials and unencrypted Kubernetes Secrets and run `shellcheck`; `.pre-commit-config.yaml` and `.githooks/` hold the setup. GitHub Actions scans the full history with gitleaks. Self-hosted Renovate (run from [homelab](https://github.com/turpinator-x/homelab)) keeps dependencies current: patch, minor and digest updates merge on their own once the checks pass, after a 7-day wait, and majors wait for review.
+
+`main` is protected from force pushes and deletion, and GitHub secret scanning, push protection and Dependabot alerts are on. Two Claude Code workflows are set up: one answers `@claude` mentions, and one reviews pull requests that aren't from a bot.
