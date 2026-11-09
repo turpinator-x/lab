@@ -83,7 +83,7 @@ The Python, Docker & AI course (a local LLM, embeddings and a vector database, a
 
 ## Kubernetes in the Cloud
 
-The Kubernetes in the Cloud course (Terraform on Azure, AKS, GitOps, databases, hardening and monitoring) uses paid course material, so it isn't here. The course repo is checked out locally at `mercury-workflows/` and git-ignored, and my build is in the private repo `blockone-workflows`.
+The Kubernetes in the Cloud course (Terraform on Azure, AKS, GitOps, databases, hardening and monitoring) uses paid course material, so it isn't here. The course repo is checked out locally at `mercury-workflows/` and git-ignored, and my build is in the private repo `azure-aks-terraform` (archived since the course finished).
 
 ## DevOps Masterclass
 
