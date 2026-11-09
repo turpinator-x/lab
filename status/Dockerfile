@@ -1,5 +1,5 @@
 # Stage 1: Generate HTML
-FROM ubuntu:24.04 AS builder
+FROM ubuntu:26.04 AS builder
 
 WORKDIR /build
 COPY generate-status .
