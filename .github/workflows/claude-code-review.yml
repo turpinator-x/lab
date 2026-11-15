@@ -10,6 +10,11 @@ on:
     #   - "src/**/*.js"
     #   - "src/**/*.jsx"
 
+# A newer push to a pull request cancels that PR's older run (saves Actions minutes); every other event gets its own group (the run id), so runs on main are never cancelled.
+concurrency:
+  group: claude-code-review-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   claude-review:
     # Renovate's PRs have no human author to review for, and a failure here blocks automerge.
