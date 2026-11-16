@@ -6,7 +6,7 @@ COPY updater .
 RUN chmod +x updater
 
 # Stage 2: Runtime stage (minimal image)
-FROM alpine:3.21
+FROM alpine:3.24
 
 # Install only runtime dependencies
 RUN apk add --no-cache curl ca-certificates bash
