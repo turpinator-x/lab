@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 3: One language</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
+<div class="kicker">Lesson 3 · about 8 minutes</div>
+<h1>One language, and where it stops</h1>
+
+<h2>Recap</h2>
+<p>You can now find a deep module (<a href="0001-deep-modules.html">Lesson 1</a>) and decide what belongs inside it (<a href="0002-where-to-draw-the-edges.html">Lesson 2</a>). Now the words. The names you use are part of the design.</p>
+
+<h2>Ubiquitous language</h2>
+<p><b>Ubiquitous language</b> is a common, rigorous vocabulary shared by developers and the people who know the domain. It's rigorous because software doesn't cope well with ambiguity. It should show up in conversation, docs and code, and it should evolve as understanding grows. (<a href="https://martinfowler.com/bliki/UbiquitousLanguage.html">Fowler</a>, describing Evans.)</p>
+<p>Why it matters for you: an agent reads your names. If you say "chain" in one place and "network" in another for the same thing, you invite wrong guesses, from people and from agents.</p>
+
+<h2>Where one language stops: bounded contexts</h2>
+<p>In a large system, one word can mean different things to different groups. Fowler's example: at an electricity utility, "meter" meant the grid connection, the customer connection, or the physical device. People smooth this over in conversation. Software can't. (<a href="https://martinfowler.com/bliki/BoundedContext.html">Fowler, Bounded Context</a>.)</p>
+<p>The answer is to split the system into <b>bounded contexts</b>. Inside each one, the language is consistent. Between contexts, you are explicit about how terms map. Fowler says the dominant factor drawing the line is usually human culture: a different context begins where the language changes.</p>
+
+<svg viewBox="0 0 520 150" role="img" aria-label="Two bounded contexts, each with its own meaning of the word meter, joined by a mapping.">
+<rect class="box-fill" x="20" y="20" width="200" height="90"/><text x="40" y="45" font-weight="bold" font-size="14">Context A</text><text x="40" y="75" font-size="13">"meter" = physical device</text>
+<rect class="box-fill" x="300" y="20" width="200" height="90"/><text x="320" y="45" font-weight="bold" font-size="14">Context B</text><text x="320" y="75" font-size="13">"meter" = grid connection</text>
+<line x1="220" y1="65" x2="300" y2="65" stroke="currentColor" stroke-width="2"/><text x="232" y="58" font-size="12">mapping</text>
+<text x="20" y="135" font-size="13">Same word, different model. Say where the line is.</text>
+</svg>
+
+<h2>The glossary</h2>
+<p>A <b>glossary</b> writes the language down: one agreed word per concept, plus the words to avoid. It is the cheapest tool to keep humans and agents on the same page. See the <a href="../reference/0001-glossary.html">glossary</a> for this course.</p>
+
+<h2>Try it</h2>
+<div class="q" data-answer="3" data-why="One rigorous vocabulary, shared and tested in conversation."><p>1. What is a ubiquitous language?</p>
+<label><input type="radio" name="q1" hidden>Shared words used only by developers</label>
+<label><input type="radio" name="q1" hidden>Technical names invented for each file</label>
+<label><input type="radio" name="q1" hidden>A translation table between teams</label>
+<label><input type="radio" name="q1" hidden>One rigorous vocabulary shared by everyone</label></div>
+<div class="q" data-answer="1" data-why="Different groups used one word for different things, which software can't handle."><p>2. Why did "meter" cause trouble at the utility?</p>
+<label><input type="radio" name="q2" hidden>Nobody had ever written the word down</label>
+<label><input type="radio" name="q2" hidden>Different groups meant different things by it</label>
+<label><input type="radio" name="q2" hidden>Developers refused to learn the utility's terms</label>
+<label><input type="radio" name="q2" hidden>It was too short to search for</label></div>
+<div class="q" data-answer="2" data-why="Fowler: the usual dominant factor is human culture, so the line sits where the language changes."><p>3. What usually draws a bounded context line?</p>
+<label><input type="radio" name="q3" hidden>The folder where the files sit</label>
+<label><input type="radio" name="q3" hidden>The number of developers on staff</label>
+<label><input type="radio" name="q3" hidden>The point where the language changes</label>
+<label><input type="radio" name="q3" hidden>The programming language being used</label></div>
+
+<h2>Say it out loud (2 minutes)</h2>
+<div class="card sayit"><p>About <b>claims-app</b>:</p>
+<p>"Two words I use for the same thing are ___ and ___. The one I'd pick is ___, and I'd list the other to avoid. Is there a word that means two things in different parts of the app?"</p>
+<p>Also tell me which of your repos is the course repo you want to use as the example. I couldn't find a glossary file in your repos, so I'm not assuming one exists.</p></div>
+
+<h2>Read next</h2>
+<p>Primary source: <a href="https://www.domainlanguage.com/ddd/reference/">Evans, Domain-Driven Design Reference</a> (the author's free summary; I haven't read it in full, so skim its sections on ubiquitous language and bounded context). Also <a href="https://martinfowler.com/bliki/BoundedContext.html">Fowler: Bounded Context</a>, which I read.</p>
+<p class="card"><b>Stuck?</b> Ask me anything. I'm your teacher.</p>
+</main><script src="../assets/quiz.js"></script><script src="../assets/readaloud.js"></script></body></html>

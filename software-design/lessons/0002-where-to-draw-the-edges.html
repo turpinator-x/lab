@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 2: Where to draw the edges</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
+<div class="kicker">Lesson 2 · about 8 minutes</div>
+<h1>Where to draw the edges</h1>
+
+<h2>Recap</h2>
+<p>In <a href="0001-deep-modules.html">Lesson 1</a> you saw that a deep module has a small interface and hides a lot. Now the question is: <b>what goes inside one module, and what goes in another?</b></p>
+
+<h2>The key idea: information hiding</h2>
+<p>Each module owns certain knowledge, or design decisions. The interface should not reveal them. Then you can change the inside without breaking anyone. The opposite is <b>information leakage</b>: other modules depend on the details. (<a href="https://web.stanford.edu/~ouster/cgi-bin/cs190-spring16/lecture.php?topic=modularDesign">Ousterhout's modular design notes</a>, which credit the Parnas paper.)</p>
+
+<svg viewBox="0 0 520 190" role="img" aria-label="Left: two modules both know the data format, so a change breaks both. Right: one module owns the format and the others just ask it.">
+<text x="20" y="18" font-weight="bold">LEAKY (bad)</text>
+<rect class="box-fill" x="20" y="30" width="100" height="40"/><text x="30" y="55" font-size="13">Module A</text>
+<rect class="box-fill" x="140" y="30" width="100" height="40"/><text x="150" y="55" font-size="13">Module B</text>
+<text x="20" y="110" font-size="13">Both know the format.</text>
+<text x="20" y="130" font-size="13">Change it: edit both.</text>
+<text x="290" y="18" font-weight="bold">HIDDEN (good)</text>
+<rect class="box-fill" x="290" y="30" width="100" height="40"/><text x="300" y="55" font-size="13">Module A</text>
+<rect class="box-fill" x="410" y="30" width="100" height="40"/><text x="420" y="55" font-size="13">Module B</text>
+<rect class="box-fill" x="340" y="105" width="120" height="40"/><text x="352" y="130" font-size="13">Owner of format</text>
+<line x1="340" y1="70" x2="380" y2="105" stroke="currentColor"/><line x1="460" y1="70" x2="430" y2="105" stroke="currentColor"/>
+<text x="290" y="170" font-size="13">Change it: edit one place.</text>
+</svg>
+
+<h2>The rule of thumb</h2>
+<p><b>Bring together</b> when the pieces share information, do one related task, repeat a pattern, or must be handled the same way. You remove dependencies and duplication.</p>
+<p><b>Keep separate</b> when they share little information or truly need different treatment. (Source: the same <a href="https://web.stanford.edu/~ouster/cgi-bin/cs190-spring16/lecture.php?topic=modularDesign">notes</a>.)</p>
+<p class="card">A short way to say it: <b>things that change together belong together.</b> This is my summary of the idea, not Ousterhout's wording.</p>
+
+<h2>Try it</h2>
+<div class="q" data-answer="1" data-why="One owner means a change is made once."><p>1. Two modules both need to know the same data format. What helps most?</p>
+<label><input type="radio" name="q1" hidden>Document the format in both modules</label>
+<label><input type="radio" name="q1" hidden>Pull that knowledge into one module</label>
+<label><input type="radio" name="q1" hidden>Split each module into smaller pieces</label>
+<label><input type="radio" name="q1" hidden>Rename the format in each module</label></div>
+<div class="q" data-answer="0" data-why="Little shared information means little reason to join them."><p>2. When is it right to keep things separate?</p>
+<label><input type="radio" name="q2" hidden>They share almost no information together</label>
+<label><input type="radio" name="q2" hidden>Their files sit in one folder</label>
+<label><input type="radio" name="q2" hidden>Their names share a similar prefix</label>
+<label><input type="radio" name="q2" hidden>Their authors work on one team</label></div>
+<div class="q" data-answer="2" data-why="A rule copied in three places will drift. Put it in one place."><p>3. A made-up example: one pricing rule is copied into a web page, an email sender and a report. The rule changes. Best fix?</p>
+<label><input type="radio" name="q3" hidden>Tell each place to update separately</label>
+<label><input type="radio" name="q3" hidden>Add comments marking each repeated copy</label>
+<label><input type="radio" name="q3" hidden>Put the rule in one place</label>
+<label><input type="radio" name="q3" hidden>Test each copy more heavily instead</label></div>
+
+<h2>Say it out loud (2 minutes)</h2>
+<div class="card sayit"><p>About <b>claims-app</b>. I don't know its code, so you tell me:</p>
+<p>"Name one fact that might change, like which network or contract it reads. Where does that fact live today? Is it in one place or several? If several, what would I merge?"</p>
+<p>Paste your answer to me for feedback.</p></div>
+
+<h2>Read or watch next</h2>
+<p>Primary source: <a href="https://web.stanford.edu/~ouster/cgi-bin/cs190-spring16/lecture.php?topic=modularDesign">Ousterhout, CS 190 Modular Design notes</a> (the sections on information hiding and "bring together if"). Also see the <a href="../reference/0001-glossary.html">Glossary</a>.</p>
+<p class="card"><b>Stuck?</b> Ask me anything. I'm your teacher.</p>
+</main><script src="../assets/quiz.js"></script><script src="../assets/readaloud.js"></script></body></html>

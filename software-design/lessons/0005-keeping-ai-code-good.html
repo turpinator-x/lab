@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 5: Keeping AI code good</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
+<div class="kicker">Lesson 5 · about 10 minutes</div>
+<h1>"How do you keep AI-written code good?"</h1>
+
+<h2>Your answer, in four habits</h2>
+<p>You already know the pieces. This lesson ties them into one short story for an interview.</p>
+<ol>
+<li><b>Deep modules.</b> Small interface, lots hidden. Run the deletion test on anything the agent adds. (<a href="0001-deep-modules.html">Lesson 1</a>)</li>
+<li><b>One place per fact.</b> Things that change together live together. (<a href="0002-where-to-draw-the-edges.html">Lesson 2</a>)</li>
+<li><b>One written language.</b> One word per concept, in a glossary the agent reads. (<a href="0003-one-language.html">Lesson 3</a>)</li>
+<li><b>Pin and compare.</b> Pin today's behavior, let the agent change it, compare. Use a seam to test fast. (<a href="0004-change-code-safely.html">Lesson 4</a>)</li>
+</ol>
+<p class="card">Habits 1 to 3 shape the code <i>before</i> the agent works. Habit 4 checks it <i>after</i>. That before-and-after split is a good way to say it.</p>
+
+<h2>Your own repo is the proof</h2>
+<p>I read <code>CLAUDE.md</code> in blockone-devops-ai-journey. I didn't read the files it points to, so check each line before you use it.</p>
+<table>
+<tr><th>Habit</th><th>What your repo's CLAUDE.md says</th></tr>
+<tr><td>Written rules for agents</td><td>A <code>CLAUDE.md</code> tells an agent whether to act as a mentor or a maintainer.</td></tr>
+<tr><td>One written language</td><td>"One word for one thing", with <code>docs/language-plan.md</code> as the reference.</td></tr>
+<tr><td>Pin and compare</td><td><code>tests/lint.py</code> enforces lesson section order. <code>tests/harness.py</code> runs lesson commands in a clean container. <code>tests/check_links.py</code> checks links.</td></tr>
+<tr><td>One place per fact</td><td>Each stage teaches its tools from <code>curriculum/daily-toolkit.md</code>.</td></tr>
+</table>
+<p>The strongest line: <b>the rules are checked by tests, not just written down.</b> An agent can't quietly break them.</p>
+
+<h2>Try it (mixed practice)</h2>
+<div class="q" data-answer="1" data-why="If deleting it removes nothing, it was a pass-through."><p>1. An agent adds a small wrapper that only forwards calls. Which habit catches it?</p>
+<label><input type="radio" name="q1" hidden>Pin and compare the old output</label>
+<label><input type="radio" name="q1" hidden>Run the deletion test on it</label>
+<label><input type="radio" name="q1" hidden>Add the word to the glossary</label>
+<label><input type="radio" name="q1" hidden>Put the fact in one place</label></div>
+<div class="q" data-answer="3" data-why="One word per concept, written down, so humans and agents match."><p>2. An agent calls one thing "chain" in one file and "network" in another. Fix?</p>
+<label><input type="radio" name="q2" hidden>Run the deletion test on it</label>
+<label><input type="radio" name="q2" hidden>Pin and compare the old output</label>
+<label><input type="radio" name="q2" hidden>Put the fact in one place</label>
+<label><input type="radio" name="q2" hidden>Add the word to the glossary</label></div>
+<div class="q" data-answer="0" data-why="The seam is where the code calls the outside world, so you can swap in recorded data."><p>3. Where is the best seam for testing a blockchain crawler?</p>
+<label><input type="radio" name="q3" hidden>Where it calls the chain's data source</label>
+<label><input type="radio" name="q3" hidden>The middle of the crawler's main loop</label>
+<label><input type="radio" name="q3" hidden>The file that holds its log output</label>
+<label><input type="radio" name="q3" hidden>The test that checks its final output</label></div>
+
+<h2>Say it out loud (60 seconds)</h2>
+<div class="card sayit"><p>Dictate your answer to "How do you keep AI-written code good?" Use this skeleton, but your own words:</p>
+<p>"Before the agent works, I shape the code: ___, ___, ___. After, I check it by ___. For example, in my course repo, ___."</p>
+<p>Paste it here. I'll give feedback, and we'll tighten it until it's short enough to say in an interview.</p></div>
+
+<h2>Read next</h2>
+<p>Quick reference: <a href="../reference/0002-ai-code-quality-story.html">your four habits on one page</a> and the <a href="../reference/0001-glossary.html">glossary</a>. Primary sources: <a href="https://web.stanford.edu/~ouster/cgi-bin/cs190-spring16/lecture.php?topic=modularDesign">Ousterhout</a>, <a href="https://martinfowler.com/bliki/UbiquitousLanguage.html">Fowler on ubiquitous language</a> and <a href="https://martinfowler.com/bliki/LegacySeam.html">Fowler on seams</a>.</p>
+<p class="card"><b>Stuck?</b> Ask me anything. I'm your teacher.</p>
+</main><script src="../assets/quiz.js"></script><script src="../assets/readaloud.js"></script></body></html>

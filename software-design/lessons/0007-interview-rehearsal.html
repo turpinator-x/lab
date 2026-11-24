@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 7: Interview rehearsal</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
+<div class="kicker">Lesson 7 · about 15 minutes · all spoken</div>
+<h1>Interview rehearsal</h1>
+
+<h2>How this works</h2>
+<p>No new ideas today. This is <b>retrieval practice</b>: you pull the answer out of memory, which is what builds long-term recall. For each question below:</p>
+<ol><li><b>Say</b> your answer aloud (or dictate it) first.</li><li><b>Reveal</b> the outline and compare.</li><li><b>Rate</b> yourself honestly.</li></ol>
+<p>The outlines are skeletons, not scripts. Use your own words and your own projects.</p>
+<p class="card" id="fc-tally">0 of 6 said clearly</p>
+
+<h2>The six questions</h2>
+
+<div class="fc"><p class="fcq">1. What is a deep module? Give an example from your own work. (<a href="0001-deep-modules.html">Lesson 1</a>)</p>
+<div class="fca" hidden><ul>
+<li>Small interface, lots of behaviour hidden behind it.</li>
+<li>Claims-app: wallet address in, next claim time out. It hides the contract reads and network calls.</li>
+<li>Deletion test: delete it and every user must solve that themselves. The complexity reappears in every caller.</li>
+<li>Name one thing the caller still has to know, for honesty.</li></ul></div></div>
+
+<div class="fc"><p class="fcq">2. Why do you keep a glossary when you work with AI agents? (<a href="0003-one-language.html">Lesson 3</a>)</p>
+<div class="fca" hidden><ul>
+<li>An agent reads your names. Two words for one thing invite wrong guesses.</li>
+<li>Real catch: I said "student" while my repo said "learner". The glossary settles it.</li>
+<li>It's not only documentation: <code>CLAUDE.md</code> points agents at <code>GLOSSARY.md</code>. The change is in PR #33, which is open with auto-merge on and not yet merged as I write this. Check its state before you say "merged".</li>
+<li>Rule I added: never write "progress" alone. Say "learning progress" or "career advancement".</li></ul></div></div>
+
+<div class="fc"><p class="fcq">3. Show me a bounded context in your project. (<a href="0003-one-language.html">Lesson 3</a>)</p>
+<div class="fca" hidden><ul>
+<li>One AI, two roles: <b>mentor</b> and <b>maintainer</b>.</li>
+<li>Mentor: teaches the learner, never asks personal questions, protects privacy (<code>mentor/MENTOR.md</code>).</li>
+<li>Maintainer: changes the curriculum, must pass <code>tests/lint.py</code> and <code>tests/harness.py</code> (<code>CLAUDE.md</code>).</li>
+<li>Same repo, same AI, different rules and language. That's where the line is.</li></ul></div></div>
+
+<div class="fc"><p class="fcq">4. You can't read all the code an agent writes. How do you review it? (<a href="0004-change-code-safely.html">Lesson 4</a>)</p>
+<div class="fca" hidden><ul>
+<li>Pin today's behaviour with a characterization test, let the agent change the code, rerun and compare.</li>
+<li>Put a seam where the code calls the outside world, so tests run on recorded data: fast and repeatable.</li>
+<li>Separate timing check for speed, because pin tests check behaviour, not speed.</li>
+<li>If it's worse on either, roll back.</li></ul></div></div>
+
+<div class="fc"><p class="fcq">5. What are the limits of that approach? When would you not trust it?</p>
+<div class="fca" hidden><ul>
+<li>A characterization test records what the code <i>does</i>, not what it <i>should</i> do (<a href="https://www.infoq.com/news/2007/03/characterization-testing">InfoQ summary of Feathers</a>). It pins existing bugs too.</li>
+<li>So a green result means "unchanged", not "correct".</li>
+<li>Tests only cover what I pinned. I choose the area around the change first.</li>
+<li>Real example of a rule enforced by tests, not words: the harness runs every lesson's commands in a clean container.</li></ul></div></div>
+
+<div class="fc"><p class="fcq">6. How do you keep AI-written code good? Forty-five seconds. (<a href="0005-keeping-ai-code-good.html">Lesson 5</a>)</p>
+<div class="fca" hidden><ul>
+<li><b>Before:</b> deep modules, one place per fact, one written language.</li>
+<li><b>After:</b> pin and compare, with a seam so it's fast, plus a timing check.</li>
+<li>One real example: the harness stops an agent quietly breaking a lesson.</li>
+<li>One-page reference: <a href="../reference/0002-ai-code-quality-story.html">four habits</a>.</li></ul></div></div>
+
+<h2>Spacing: what to do next</h2>
+<p>Come back in a few days and do the cards again. Questions you marked "practice again" go first. Your marks stay in this browser only.</p>
+<p>Where it came from: <a href="https://web.stanford.edu/~ouster/cgi-bin/cs190-spring16/lecture.php?topic=modularDesign">Ousterhout</a>, <a href="https://martinfowler.com/bliki/BoundedContext.html">Fowler on bounded context</a>, <a href="https://martinfowler.com/bliki/LegacySeam.html">Fowler on seams</a>. Terms: <a href="../reference/0001-glossary.html">glossary</a>.</p>
+<p class="card"><b>Want a harder round?</b> Ask me to play the interviewer and press you with follow-up questions on any card. I'm your teacher.</p>
+</main><script src="../assets/flashcards.js"></script></body></html>

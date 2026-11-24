@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 4: Change code safely</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
+<div class="kicker">Lesson 4 · about 8 minutes</div>
+<h1>Changing code you don't fully understand</h1>
+
+<h2>Why this matters for agent work</h2>
+<p>An agent can change a lot of code fast. You won't understand all of it. So how do you know the change didn't break something? You don't read every line. You <b>pin down what the code does now</b>, then check that it still does it.</p>
+
+<h2>Tool 1: the characterization test</h2>
+<p>A <b>characterization test</b> checks what the code <i>actually does today</i>, not what it should do. Feathers coined the term. After a change, you rerun them and see whether anything unexpectedly moved. (<a href="https://www.infoq.com/news/2007/03/characterization-testing">InfoQ summary of Feathers' idea</a>.)</p>
+<p>Feathers' advice on where to start: write tests around the area you are about to change, then around the specific things you will change. If you are moving code, test that it is still connected properly.</p>
+
+<svg viewBox="0 0 520 110" role="img" aria-label="Three steps: pin current behavior, let the agent change the code, compare.">
+<rect class="box-fill" x="10" y="25" width="150" height="50"/><text x="25" y="55" font-size="14">1. Pin today's</text><text x="25" y="70" font-size="14">behavior</text>
+<rect class="box-fill" x="185" y="25" width="150" height="50"/><text x="200" y="55" font-size="14">2. Agent changes</text><text x="200" y="70" font-size="14">the code</text>
+<rect class="box-fill" x="360" y="25" width="150" height="50"/><text x="375" y="55" font-size="14">3. Rerun and</text><text x="375" y="70" font-size="14">compare</text>
+<text x="10" y="100" font-size="13">Anything that moved without a reason is a question to ask.</text>
+</svg>
+
+<h2>Tool 2: the seam</h2>
+<p>A <b>seam</b> is a place where you can change behavior without editing in that place. You use one to cut a slow or risky dependency out of a test. (<a href="https://martinfowler.com/bliki/LegacySeam.html">Fowler, Legacy Seam</a>.)</p>
+<p>Fowler's example: a price calculation calls a slow, costly shipping service. Pass the shipping function in as a parameter, and a test can hand in a fake that returns a fixed answer. The place where you choose real or fake is the <b>enabling point</b>.</p>
+<p class="card">Link to Lesson 1: a seam is where a module's <b>interface</b> lives. See the <a href="../reference/0001-glossary.html">glossary</a>.</p>
+
+<h2>Try it</h2>
+<div class="q" data-answer="0" data-why="They record actual current behavior, not the ideal."><p>1. What does a characterization test check?</p>
+<label><input type="radio" name="q1" hidden>What the code actually does today</label>
+<label><input type="radio" name="q1" hidden>What the code should ideally do</label>
+<label><input type="radio" name="q1" hidden>What the original spec document said</label>
+<label><input type="radio" name="q1" hidden>What the newest teammate would expect</label></div>
+<div class="q" data-answer="2" data-why="Feathers' definition: change behavior without editing in that place."><p>2. What is a seam?</p>
+<label><input type="radio" name="q2" hidden>A folder where all the tests are kept</label>
+<label><input type="radio" name="q2" hidden>A name for the slowest part of code</label>
+<label><input type="radio" name="q2" hidden>A place to change behavior without editing there</label>
+<label><input type="radio" name="q2" hidden>A test that fails until the code changes</label></div>
+<div class="q" data-answer="3" data-why="Pin what it does now, then compare after the change. No need to read every line."><p>3. An agent proposes a big change to code with no tests. Best first step?</p>
+<label><input type="radio" name="q3" hidden>Read every line until fully understanding it</label>
+<label><input type="radio" name="q3" hidden>Approve it because the agent was confident</label>
+<label><input type="radio" name="q3" hidden>Ask the agent to rewrite the tests</label>
+<label><input type="radio" name="q3" hidden>Write tests pinning current behavior, then compare</label></div>
+
+<h2>Say it out loud (2 minutes)</h2>
+<div class="card sayit"><p>"When an agent changes code I don't fully understand, before it starts I ___. After, I ___. In claims-app, a place I could put a seam is ___, because ___."</p>
+<p>Hint: think of anything slow, costly or outside your control that the app calls. I haven't read the code, so you pick.</p></div>
+
+<h2>Read next</h2>
+<p>Primary source: <a href="https://martinfowler.com/bliki/LegacySeam.html">Fowler, Legacy Seam</a>, which I read in full. The source of both ideas is Feathers' book, <i>Working Effectively with Legacy Code</i>. I couldn't find a free primary version of it, so the characterization test material here comes from the InfoQ summary.</p>
+<p class="card"><b>Stuck?</b> Ask me anything. I'm your teacher.</p>
+</main><script src="../assets/quiz.js"></script><script src="../assets/readaloud.js"></script></body></html>

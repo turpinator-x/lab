@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 1: Deep modules</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
+<div class="kicker">Lesson 1 · about 8 minutes</div>
+<h1>Deep modules</h1>
+
+<h2>The big picture</h2>
+<p>Software gets hard when you must hold too much in your head. <b>Modules</b> are how we hide things so we don't have to.</p>
+<p>A module is anything with an <b>interface</b> (what callers must know) and an <b>implementation</b> (the code inside). <a href="https://web.stanford.edu/~ouster/cgi-bin/cs190-spring16/lecture.php?topic=modularDesign">Ousterhout's notes</a> say the interface includes more than the signature. It includes side effects and behaviour callers depend on.</p>
+<p>The goal, in his words: lots of functionality for little interface complexity.</p>
+
+<h2>Deep vs shallow</h2>
+<svg viewBox="0 0 520 220" role="img" aria-label="Deep module: small interface, big implementation. Shallow module: big interface, thin implementation.">
+<text x="20" y="20" font-weight="bold">DEEP (good)</text>
+<rect class="box-fill" x="20" y="30" width="80" height="30"/><text x="28" y="50" font-size="13">interface</text>
+<rect class="box-fill" x="20" y="60" width="200" height="130"/><text x="60" y="130" font-size="13">lots of hidden work</text>
+<text x="290" y="20" font-weight="bold">SHALLOW (bad)</text>
+<rect class="box-fill" x="290" y="30" width="200" height="110"/><text x="320" y="90" font-size="13">big interface to learn</text>
+<rect class="box-fill" x="290" y="140" width="200" height="30"/><text x="330" y="160" font-size="13">tiny work inside</text>
+</svg>
+<p>A <b>deep</b> module is easy to use and does a lot. A <b>shallow</b> module costs you nearly as much to learn as it saves you.</p>
+
+<h2>The classic example: files</h2>
+<p>Unix file I/O is Ousterhout's example of a deep module. A few calls (open, read, write, close) hide disk layout, caching and drivers. Devices are opened like files and use the same read and write calls (<a href="https://web.stanford.edu/~ouster/cgi-bin/cs190-spring16/lecture.php?topic=unix">his Unix notes</a>). The kernel handles device details, so callers never see them.</p>
+
+<h2>Warning signs: shallow modules</h2>
+<ul><li>Calling it takes about as much code as doing the work yourself.</li>
+<li>It just passes calls to something else.</li>
+<li>You have <b>classitis</b>: many tiny classes, each hiding almost nothing.</li></ul>
+<p class="card"><b>Deletion test.</b> Imagine deleting the module. If the complexity vanishes, it was a pass-through. If it reappears in many callers, the module was earning its keep. (Vocabulary from the <code>codebase-design</code> skill; the test is a rule of thumb, not Ousterhout's.)</p>
+<p>One caution: size alone isn't the measure. Ousterhout says the real metric is functionality divided by interface complexity.</p>
+
+<h2>Try it</h2>
+<div class="q" data-answer="2" data-why="Small interface, lots of behaviour behind it."><p>1. Which describes a deep module?</p>
+<label><input type="radio" name="q1" hidden>Large interface exposing every internal step to callers</label>
+<label><input type="radio" name="q1" hidden>Many small classes each doing almost nothing alone</label>
+<label><input type="radio" name="q1" hidden>Small interface hiding a lot of working behaviour inside</label>
+<label><input type="radio" name="q1" hidden>Thin implementation that mostly just forwards calls elsewhere</label></div>
+<div class="q" data-answer="0" data-why="The same few calls hide the device differences."><p>2. Why is Unix file I/O called deep?</p>
+<label><input type="radio" name="q2" hidden>Same few calls work for files and devices</label>
+<label><input type="radio" name="q2" hidden>Every device type needs its own special calls</label>
+<label><input type="radio" name="q2" hidden>Callers must understand disk layout before reading data</label>
+<label><input type="radio" name="q2" hidden>Interface grows longer whenever new hardware gets added</label></div>
+<div class="q" data-answer="3" data-why="Complexity that reappears across callers means the module was hiding it."><p>3. You delete a module and its complexity reappears in many callers. What does that show?</p>
+<label><input type="radio" name="q3" hidden>It was only passing calls along, adding nothing</label>
+<label><input type="radio" name="q3" hidden>It was oversized and should be split apart</label>
+<label><input type="radio" name="q3" hidden>It lacked tests and needs more coverage first</label>
+<label><input type="radio" name="q3" hidden>It was earning its keep, hiding that complexity</label></div>
+
+<h2>Say it out loud (2 minutes)</h2>
+<div class="card sayit"><p>Dictate this (Alt+Space), or just say it:</p>
+<p>"Pick one module from <b>homelab</b>, <b>claims-app</b> or <b>blockone-devops-ai-journey</b>. What is its interface? What does it hide? Is it deep or shallow, and how would the deletion test come out?"</p>
+<p>Then paste your answer to me. I'll give feedback, and we'll record what you've shown.</p></div>
+
+<h2>Read or watch next</h2>
+<p>Primary source: <a href="https://www.youtube.com/watch?v=bmSAYlu0NcY">Ousterhout, "A Philosophy of Software Design", Talks at Google</a>. Also: <a href="../reference/0001-glossary.html">Glossary</a>.</p>
+<p class="card"><b>Stuck?</b> Ask me anything about this lesson. I'm your teacher. No question is too small.</p>
+</main><script src="../assets/quiz.js"></script><script src="../assets/readaloud.js"></script></body></html>
