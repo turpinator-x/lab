@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Glossary</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
+<div class="kicker">Reference</div><h1>Glossary</h1>
+<p>Terms are used exactly like this in every lesson. See <a href="../lessons/0001-deep-modules.html">Lesson 1</a>.</p>
+<div class="card"><b>Module</b>: anything with an interface and an implementation. A function, class or package.</div>
+<div class="card"><b>Interface</b>: everything a caller must know to use the module, including side effects and error behaviour.</div>
+<div class="card"><b>Implementation</b>: the code inside that keeps the interface's promises.</div>
+<div class="card"><b>Deep module</b>: small interface, lots of behaviour behind it.</div>
+<div class="card"><b>Shallow module</b>: interface nearly as complex as what it does.</div>
+<div class="card"><b>Classitis</b>: too many tiny classes, each hiding little.</div>
+<div class="card"><b>Deletion test</b>: delete it in your head. Complexity vanishes = pass-through. Complexity reappears in callers = earning its keep.</div>
+<div class="card"><b>Information hiding</b>: a module keeps its design decisions private so the implementation can change without breaking callers. <b>Information leakage</b> is the opposite.</div>
+<div class="card"><b>Bring together / keep separate</b>: group code that shares information, does a related task, repeats a pattern or needs the same handling. Separate code that shares little. <a href="../lessons/0002-where-to-draw-the-edges.html">Lesson 2</a>.</div>
+<div class="card"><b>Ubiquitous language</b>: one rigorous vocabulary shared by developers and domain experts, used in talk, docs and code. <a href="../lessons/0003-one-language.html">Lesson 3</a>.</div>
+<div class="card"><b>Bounded context</b>: an area where one model and one language are consistent. A new context starts where the language changes.</div>
+<div class="card"><b>Polyseme</b>: one word with several meanings in different groups (Fowler's example: "meter").</div>
+<div class="card"><b>Glossary</b>: the written list of agreed words, with the words to avoid.</div>
+<div class="card"><b>Characterization test</b>: a test that records what the code actually does now, so you can spot unintended change. <a href="../lessons/0004-change-code-safely.html">Lesson 4</a>.</div>
+<div class="card"><b>Seam</b> (Feathers): a place where you can change behavior without editing in that place. Where a module's interface lives.</div>
+<div class="card"><b>Enabling point</b>: where you choose which behavior a seam uses (for example, real or fake).</div>
+</main></body></html>

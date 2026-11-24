@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 6: A glossary for your repo</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
+<div class="kicker">Lesson 6 · about 10 minutes</div>
+<h1>Write the glossary for your course repo</h1>
+
+<h2>Why now</h2>
+<p>In <a href="0003-one-language.html">Lesson 3</a> you picked one word over another. Now you do it for real, in <b>blockone-devops-ai-journey</b>. The result is a real artifact you can show an employer.</p>
+<p>Your repo already has the rule: <code>CLAUDE.md</code> says to use "one word for one thing", and <code>docs/language-plan.md</code> says it again. What's missing is the list of which words. (I read <code>CLAUDE.md</code>, <code>README.md</code>, <code>docs/language-plan.md</code> and part of <code>mentor/MENTOR.md</code>.)</p>
+
+<h2>A real catch from your own words</h2>
+<p>In Lesson 5 you said "student". Your repo says <b>learner</b>. That is exactly the kind of drift a glossary prevents. An agent reading your repo uses "learner". You, speaking, use "student". Pick one.</p>
+
+<h2>Step 1: decide the words</h2>
+<p>These concepts all appear in the repo with more than one candidate word. Fill in your pick and the words to avoid, separated by commas. The page checks each row as you type.</p>
+<table class="gb">
+<tr><th>Concept</th><th>Seen in the repo</th><th>Your pick</th><th>Avoid</th></tr>
+<tr data-concept="The person learning the course."><td>The person learning</td><td>learner (<code>CLAUDE.md</code>, <code>learner/</code>). You said: student.</td><td><input class="pick"></td><td><input class="avoid"><span class="gbnote"></span></td></tr>
+<tr data-concept="The whole product, from stage 0 onward."><td>The whole product</td><td>course, curriculum, journey (<code>README.md</code> uses all three)</td><td><input class="pick"></td><td><input class="avoid"><span class="gbnote"></span></td></tr>
+<tr data-concept="One unit of teaching, run in a fixed section order."><td>One unit of teaching</td><td>lesson; README also says "lesson and guide"</td><td><input class="pick"></td><td><input class="avoid"><span class="gbnote"></span></td></tr>
+<tr data-concept="A group of lessons that builds one set of skills."><td>A group of lessons</td><td>stage; README also mentions tracks and electives</td><td><input class="pick"></td><td><input class="avoid"><span class="gbnote"></span></td></tr>
+<tr data-concept="The AI that teaches the learner one on one."><td>The AI that teaches</td><td>mentor (<code>CLAUDE.md</code>); a person who changes the course is a "maintainer"</td><td><input class="pick"></td><td><input class="avoid"><span class="gbnote"></span></td></tr>
+</table>
+<button class="go" id="gb-go">Build glossary text</button>
+<pre id="gb-out">Your glossary will appear here.</pre>
+<p>Careful with the last row: "mentor" and "maintainer" may be <i>two concepts</i>, not two words for one. Decide, and say why.</p>
+
+<h2>Step 2: find a bounded context</h2>
+<p>Recall from <a href="0003-one-language.html">Lesson 3</a>: a bounded context starts where the language changes. Look at these top-level folders of your repo: <code>curriculum/</code>, <code>mentor/</code>, <code>learner/</code>, <code>tests/</code>, <code>feedback/</code>.</p>
+<p class="card">Ask for each: does a word like "progress" or "lesson" mean something different here? My guess, to check, not a fact: "lesson" is teaching material in <code>curriculum/</code> but a test target in <code>tests/</code>. If it does, you have found a context boundary and you can name the mapping between them. If nothing changes, it's one context.</p>
+
+<h2>Say it out loud (90 seconds)</h2>
+<div class="card sayit"><p>"In my course repo, the agent and I now share one word list. For example, we say ___, not ___. I found that the word ___ means one thing in ___ and another in ___, so those are separate contexts."</p>
+<p>Paste your picks and your spoken answer here. After you approve the list, I'll draft a <code>GLOSSARY.md</code> for the repo. I won't change your repo until you say so.</p></div>
+
+<h2>Read next</h2>
+<p><a href="https://martinfowler.com/bliki/UbiquitousLanguage.html">Fowler: Ubiquitous Language</a> and <a href="https://martinfowler.com/bliki/BoundedContext.html">Fowler: Bounded Context</a>. See also the <a href="../reference/0001-glossary.html">course glossary</a>.</p>
+<p class="card"><b>Stuck?</b> Ask me anything. I'm your teacher.</p>
+</main><script src="../assets/glossary-builder.js"></script></body></html>
